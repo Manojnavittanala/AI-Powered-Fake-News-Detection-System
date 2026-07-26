@@ -212,7 +212,11 @@ Add screenshots here after uploading them.
 
 ### 🏠 Home Page
 
-![Home](screenshots/home.png)
+![Home](screenshots/home1.png)
+
+## 🏠 Home Page (continued)
+
+![Home](screenshots/home2.png)
 
 ---
 
