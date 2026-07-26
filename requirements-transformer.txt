@@ -1,0 +1,3 @@
+# Optional backend. Keep the classical TF-IDF deployment lightweight by default.
+transformers>=4.40
+torch>=2.2

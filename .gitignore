@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Pytest
+.pytest_cache/
+.pytest_cache.zip
+
+# Dataset
+dataset/Fake.csv
+dataset/True.csv
+dataset_report.json
+
+# VS Code
+.vscode/
+.idea/
+
+# PyCharm
+.idea/
+
+# Python cache
+.pytest_cache/
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model cache (optional)
+*.joblib
+
+# NLTK
+nltk_data/
+
+# Temporary files
+*.tmp

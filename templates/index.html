@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fraud News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="container">
+            <div class="brand">Fraud News Detector</div>
+            <div class="menu">
+                {% if user %}
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('detect') }}">Detect</a>
+                {% if user.is_admin %}
+                <a href="{{ url_for('admin') }}">Admin</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+                {% endif %}
+                {% if user %}
+                <a class="cta" href="{{ url_for('detect') }}">Start Detection</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero card">
+            <div>
+                <p class="badge">AI Powered</p>
+                <h1>Detect Fake News with Confidence</h1>
+                <p>Fraud News Detector combines NLP and machine learning to determine whether an article is real or fake. Analyze text, view confidence, and explore prediction history.</p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    {% if user %}
+                    <a class="cta" href="{{ url_for('detect') }}">Start Detection</a>
+                    {% else %}
+                    <a class="cta" href="{{ url_for('login') }}">Login</a>
+                    <a class="secondary" href="{{ url_for('register') }}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card" style="background: rgba(30, 41, 59, 0.95);">
+                <h3>Why it matters</h3>
+                <p>False news spreads faster than truth. Our model helps users evaluate articles using a trained classifier and provide explainable keyword influence.</p>
+                <div class="stats-grid" style="margin-top: 1.5rem;">
+                    <div class="stat-card"><h3>{% if model_accuracy is not none %}{{ model_accuracy }}%{% else %}N/A{% endif %}</h3><span>Model accuracy</span></div>
+                    <div class="stat-card"><h3>TF-IDF</h3><span>Text features</span></div>
+                    <div class="stat-card"><h3>SQLite</h3><span>History stored</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" style="margin-top: 2rem; padding: 2rem;">
+            <div class="section-title">
+                <h2>How it works</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card"><h3>1. Authenticate</h3><p>Register or log in to save predictions and access your dashboard.</p></div>
+                <div class="card"><h3>2. Paste news article</h3><p>Provide the text of the article and submit it to the detection engine.</p></div>
+                <div class="card"><h3>3. Review results</h3><p>See the prediction, confidence, keyword explanation, and history on your dashboard.</p></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

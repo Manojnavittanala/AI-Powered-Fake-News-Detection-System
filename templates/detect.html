@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detect News | Fraud News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="container">
+            <div class="brand">Fraud News Detector</div>
+            <div class="menu">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card form-card" style="margin-top: 2rem;">
+            <div class="section-title">
+                <h2>News Detection</h2>
+                <p>Paste the article text and get a real/fake prediction instantly.</p>
+            </div>
+
+            <div id="predict-alert" class="alert error" style="display:none;"></div>
+            <form id="predict-form">
+                <textarea id="news-text" placeholder="Paste news article here..." required></textarea>
+                <button type="submit" class="primary">Predict</button>
+            </form>
+
+            <div id="loading-indicator" class="alert" style="display:none; margin-top: 1rem;">Analyzing text, please wait...</div>
+
+            <div id="prediction-result" class="result-card card" style="display:none; margin-top: 1.5rem;">
+                <h3>Prediction</h3>
+                <p><strong id="result-label"></strong></p>
+                <p id="result-confidence"></p>
+                <p id="result-probability"></p>
+                <p id="result-model"></p>
+                <div style="display:grid; gap:1rem;">
+                    <canvas id="probability-chart" style="max-width:360px;"></canvas>
+                    <div>
+                        <h4>Important keywords</h4>
+                        <div id="keywords-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/main.js', v='2') }}"></script>
+</body>
+</html>

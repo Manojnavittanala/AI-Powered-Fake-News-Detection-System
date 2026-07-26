@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel | Fraud News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="container">
+            <div class="brand">Fraud News Detector</div>
+            <div class="menu">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="margin-top: 2rem;">
+        <section class="card" style="padding: 1.5rem;">
+            <div class="section-title">
+                <h2>Admin Panel</h2>
+                <p>Manage users, view prediction history, and explore dataset statistics.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><h3>{{ summary.total }}</h3><span>Total predictions</span></div>
+                <div class="stat-card"><h3>{{ summary.fake_count }}</h3><span>Fake news</span></div>
+                <div class="stat-card"><h3>{{ summary.real_count }}</h3><span>Real news</span></div>
+                <div class="stat-card"><h3>{{ dataset_stats.total_rows }}</h3><span>Dataset rows</span></div>
+            </div>
+        </section>
+
+        <section class="card" style="padding: 1.5rem; margin-top: 1.5rem;">
+            <h3>Users</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Name</th><th>Email</th><th>Admin</th><th>Joined</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for user_item in users %}
+                        <tr>
+                            <td>{{ user_item.name }}</td>
+                            <td>{{ user_item.email }}</td>
+                            <td>{{ 'Yes' if user_item.is_admin else 'No' }}</td>
+                            <td>{{ user_item.created_at }}</td>
+                        </tr>
+                        {% else %}
+                        <tr><td colspan="4" style="color: var(--muted);">No users found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card" style="padding: 1.5rem; margin-top: 1.5rem;">
+            <h3>Prediction History</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Date</th><th>User</th><th>Label</th><th>Confidence</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for item in history %}
+                        <tr>
+                            <td>{{ item.created_at }}</td>
+                            <td>{{ item.user_name }}</td>
+                            <td><span class="badge {{ 'real' if item.label == 'Real' else 'fake' }}">{{ item.label }}</span></td>
+                            <td>{{ item.confidence }}%</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('admin_delete', prediction_id=item.id) }}" style="display:inline;">
+                                    <button type="submit" class="secondary">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr><td colspan="5" style="color: var(--muted);">No prediction history available.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
