@@ -208,15 +208,41 @@ pytest
 ## 📷 Screenshots
 
 Add screenshots here after uploading them.
+## 📸 Screenshots
 
-```
-screenshots/
-├── homepage.png
-├── login.png
-├── dashboard.png
-├── detect.png
-└── admin.png
-```
+### 🏠 Home Page
+
+![Home](screenshots/home.png)
+
+---
+
+### 🔐 Login Page
+
+![Login](screenshots/login.png)
+
+---
+
+### 📝 Register Page
+
+![Register](screenshots/register.png)
+
+---
+
+### 📰 News Detection
+
+![Detection](screenshots/detect.png)
+
+---
+
+### 📊 Prediction Result
+
+![Result](screenshots/result.png)
+
+---
+
+### 📈 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
 
 ---
 
