@@ -47,3 +47,5 @@ nltk_data/
 
 # Temporary files
 *.tmp
+
+database.db
