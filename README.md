@@ -71,9 +71,8 @@ Fraud-News-Detector/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/fraud-news-detector.git
-
-cd fraud-news-detector
+git clone https://github.com/Manojnavittanala/AI-Powered-Fake-News-Detection-System.git
+cd AI-Powered-Fake-News-Detection-System
 ```
 
 ### Create Virtual Environment
